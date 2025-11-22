@@ -16,4 +16,4 @@ RUN cmake . && make
 
 
 EXPOSE 8080
-CMD ["./authsrv"]
+CMD ["./authsrv.dir"]
