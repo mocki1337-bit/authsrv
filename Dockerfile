@@ -1,14 +1,12 @@
 FROM ubuntu:22.04
 
-ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
-    libsqlite3-dev \
-    sqlite3 \
     libssl-dev \
-    openssl
+    libsqlite3-dev \
+    libcurl4-openssl-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY . .
@@ -16,5 +14,6 @@ COPY . .
 RUN cmake . && make
 
 EXPOSE 8080
+
 
 CMD ["./authsrv.dir"]
