@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libsqlite3-dev \
     libcurl4-openssl-dev \
+    nlohmann-json3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -14,6 +15,7 @@ COPY . .
 RUN cmake . && make
 
 EXPOSE 8080
+
 
 
 CMD ["./authsrv.dir"]
